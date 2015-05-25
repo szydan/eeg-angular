@@ -1,10 +1,11 @@
 {
   "name": "eeg-angular",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/szydan/eeg-angular",
   "authors": [
     "Szymon Danielczyk <danielczyk.szymon@gmail.com>"
   ],
+  "main": "index.js",
   "moduleType": [
     "amd",
     "node"
