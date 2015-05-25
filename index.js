@@ -1,14 +1,14 @@
-(function () {
+define(function (require) {
 
-  "use strict";
+  var Eeg = require('eeg')
 
   angular.module('eeg-angular', [])
   .directive('eeg', function () {
     return {
       restrict: 'E',
-      replace: true,
+      replace:true,
       scope: {
-        // two way bind 
+        // two way bind
         // we expect the graph to be contain
         // nodes: []
         // links: []
@@ -18,11 +18,14 @@
       },
       template: '<div></div>',
       link: function ($scope, element, attrs) {
-        var g = new Eeg(element, {} || $scope.graph.options);
+
+        var options = $scope.graph.options || {};
+        var g = new Eeg(element, options);
+
         g.addNodes($scope.graph.nodes);
         g.addLinks($scope.graph.links);
       }
     };
-  });  
+  });
 
-})();
+});
