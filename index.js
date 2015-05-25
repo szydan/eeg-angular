@@ -18,7 +18,7 @@
       },
       template: '<div></div>',
       link: function ($scope, element, attrs) {
-        var g = new Eg(element, {} || $scope.graph.options);
+        var g = new Eeg(element, {} || $scope.graph.options);
         g.addNodes($scope.graph.nodes);
         g.addLinks($scope.graph.links);
       }
