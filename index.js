@@ -19,11 +19,15 @@ define(function (require) {
       template: '<div></div>',
       link: function ($scope, element, attrs) {
 
-        var options = $scope.graph.options || {};
-        var g = new Eeg(element, options);
+        $scope.$watch('graph', function (graph) {
+          var options = $scope.graph.options || {};
+          var g = new Eeg(element, options);
 
-        g.addNodes($scope.graph.nodes);
-        g.addLinks($scope.graph.links);
+          g.addNodes($scope.graph.nodes);
+          g.addLinks($scope.graph.links);
+
+        });
+
       }
     };
   });
