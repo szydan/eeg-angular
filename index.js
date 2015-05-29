@@ -20,11 +20,13 @@ define(function (require) {
       link: function ($scope, element, attrs) {
 
         $scope.$watch('graph', function (graph) {
-          var options = $scope.graph.options || {};
-          var g = new Eeg(element, options);
+          if (graph) {
+            var options = $scope.graph.options || {};
+            var g = new Eeg(element, options);
 
-          g.addNodes($scope.graph.nodes);
-          g.addLinks($scope.graph.links);
+            g.addNodes($scope.graph.nodes);
+            g.addLinks($scope.graph.links);
+          }
 
         });
 

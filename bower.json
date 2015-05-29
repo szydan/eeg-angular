@@ -1,6 +1,6 @@
 {
   "name": "eeg-angular",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "homepage": "https://github.com/szydan/eeg-angular",
   "authors": [
     "Szymon Danielczyk <danielczyk.szymon@gmail.com>"
@@ -20,7 +20,7 @@
   ],
 
   "dependencies": {
-    "eeg": "1.0.9"
+    "eeg": "~1.0.10"
   }
 
 }
