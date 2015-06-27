@@ -21,6 +21,7 @@ define(function (require) {
 
         $scope.$watch('graph', function (graph) {
           if (graph) {
+            element.empty();
             var options = $scope.graph.options || {};
             var g = new Eeg(element, options);
 
