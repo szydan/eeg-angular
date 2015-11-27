@@ -1,6 +1,6 @@
 {
   "name": "eeg-angular",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   "homepage": "https://github.com/szydan/eeg-angular",
 
   "dependencies": {
-    "eeg": "~1.0.12"
+    "eeg": "~1.0.15"
   }
 
 }
