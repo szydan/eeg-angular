@@ -3,12 +3,12 @@ define(function (require) {
   var Eeg = require('eeg')
 
   angular.module('eeg-angular', [])
-  .directive('eeg', function () {
+  .directive('eeg', function ($rootScope) {
     return {
       restrict: 'E',
       replace:true,
       scope: {
-        // two way bind
+        eegId: '=',
         // we expect the graph to be contain
         // nodes: []
         // links: []
@@ -18,19 +18,24 @@ define(function (require) {
       },
       template: '<div></div>',
       link: function ($scope, element, attrs) {
-
         $scope.$watch('graph', function (graph) {
           if (graph) {
             element.empty();
             var options = $scope.graph.options || {};
-            var g = new Eeg(element, options);
+            $scope.g = new Eeg(element, options);
 
-            g.addNodes($scope.graph.nodes);
-            g.addLinks($scope.graph.links);
+            $scope.g.addNodes($scope.graph.nodes);
+            $scope.g.addLinks($scope.graph.links);
           }
-
         });
 
+        var off = $rootScope.$on('egg:' + $scope.eegId + ':run', function (event, method) {
+          var args = Array.prototype.slice.call(arguments);
+          args.shift();
+          args.shift();
+          $rootScope.$emit('egg:' + $scope.eegId + ':results', method, $scope.g[method](args));
+        });
+        $scope.$on('$destroy', off);
       }
     };
   });
