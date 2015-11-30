@@ -30,10 +30,12 @@ define(function (require) {
         });
 
         var off = $rootScope.$on('egg:' + $scope.eegId + ':run', function (event, method) {
-          var args = Array.prototype.slice.call(arguments);
-          args.shift();
-          args.shift();
-          $rootScope.$emit('egg:' + $scope.eegId + ':results', method, $scope.g[method](args));
+          if ($scope.g) {
+            var args = Array.prototype.slice.call(arguments);
+            args.shift();
+            args.shift();
+            $rootScope.$emit('egg:' + $scope.eegId + ':results', method, $scope.g[method](args));
+          }
         });
         $scope.$on('$destroy', off);
       }
